@@ -31,10 +31,11 @@ GUICtrlSetData(-1, "Edit1")
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 
+; Konfigurieren des Absenders
 Global $INIFile = @ScriptDir & "\Konfiguration.txt"
 _ClipBoard_SetData($INIFile)
 Global $YourMail = IniRead($INIFile,"Konfiguration","E-Mail","nichts gefunden")
-MsgBox(0,"SenderMail",$YourMail)
+;MsgBox(0,"SenderMail",$YourMail)
 
 While 1
 	$nMsg = GUIGetMsg()
