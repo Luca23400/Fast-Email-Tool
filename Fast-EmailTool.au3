@@ -33,7 +33,7 @@ GUISetState(@SW_SHOW)
 
 Global $INIFile = @ScriptDir & "\Konfiguration.txt"
 _ClipBoard_SetData($INIFile)
-Global $YourMail = IniRead($INIFile,"Email-Konfiguration","E-Mail","nichts gefunden")
+Global $YourMail = IniRead($INIFile,"Konfiguration","E-Mail","nichts gefunden")
 MsgBox(0,"SenderMail",$YourMail)
 
 While 1
