@@ -36,6 +36,18 @@ Global $INIFile = @ScriptDir & "\Konfiguration.txt"
 _ClipBoard_SetData($INIFile)
 Global $YourMail = IniRead($INIFile,"Konfiguration","E-Mail","nichts gefunden")
 ;MsgBox(0,"SenderMail",$YourMail)
+Global $YourPassword = IniRead($INIFile,"Konfiguration","Passwort","Passwort nicht gefunden")
+MsgBox(0,"",$YourPassword)
+Global $key = 197
+
+;PAsswort verschlüsselt speichern
+
+if $YourPassword == "" Then
+	Local $input = InputBox("Eingabeaufforderung", "Bitte geben Sie ihr Passwort ein:", "")
+	Local $passwortCrypt = _Crypt_EncryptData($input,$key,$CALG_3DES)
+	MsgBox(0,"",$passwortCrypt)
+
+EndIf
 
 While 1
 	$nMsg = GUIGetMsg()

@@ -1,6 +1,6 @@
 [Konfiguration]
 E-Mail = Test@gmx.de
-Passwort= 1234
+Passwort= 
 Signatur= 
 
 [Sicherheitseinstellungen]
