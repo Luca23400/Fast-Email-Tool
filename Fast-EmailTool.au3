@@ -19,7 +19,7 @@
 #include <Crypt.au3>
 
 #Region ### START Koda GUI section ### Form=
-$Form1 = GUICreate("Form1", 518, 487, -992, 172)
+$Form1 = GUICreate("Mail", 518, 487, -992, 172)
 $ButtonSend = GUICtrlCreateButton("Senden", 384, 32, 97, 33)
 $Label1 = GUICtrlCreateLabel("Empfänger:", 16, 32, 124, 33)
 $InputReceiver = GUICtrlCreateInput("", 152, 32, 185, 21)
@@ -35,18 +35,16 @@ GUISetState(@SW_SHOW)
 Global $INIFile = @ScriptDir & "\Konfiguration.txt"
 _ClipBoard_SetData($INIFile)
 Global $YourMail = IniRead($INIFile,"Konfiguration","E-Mail","nichts gefunden")
-;MsgBox(0,"SenderMail",$YourMail)
 Global $YourPassword = IniRead($INIFile,"Konfiguration","Passwort","Passwort nicht gefunden")
 MsgBox(0,"",$YourPassword)
 Global $key = 197
 
-;PAsswort verschlüsselt speichern
-
+;Passwort verschlüsselt speichern
 if $YourPassword == "" Then
 	Local $input = InputBox("Eingabeaufforderung", "Bitte geben Sie ihr Passwort ein:", "")
 	Local $passwortCrypt = _Crypt_EncryptData($input,$key,$CALG_3DES)
 	MsgBox(0,"",$passwortCrypt)
-
+	IniWrite($INIFile,"Konfiguration","Passwort",$passwortCrypt)
 EndIf
 
 While 1
