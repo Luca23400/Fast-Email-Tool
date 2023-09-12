@@ -68,6 +68,7 @@ While 1
 			else
 				MsgBox(0,"","Fehler beim senden")
 
+			EndIf
 			;MsgBox(0,"Empfänger:",$receiver)
 			;MsgBox(0,"Betreff: ",$subject)
 			;MsgBox(0,"Text:",$body)
