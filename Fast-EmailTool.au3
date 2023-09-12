@@ -17,6 +17,7 @@
 #include <MsgBoxConstants.au3>
 #include <Clipboard.au3>
 #include <Crypt.au3>
+#include <Inet.au3>
 
 #Region ### START Koda GUI section ### Form=
 $Form1 = GUICreate("Mail", 518, 487, -992, 172)
@@ -33,11 +34,15 @@ GUISetState(@SW_SHOW)
 
 ; Konfigurieren des Absenders
 Global $INIFile = @ScriptDir & "\Konfiguration.txt"
+Global $key = 197
 _ClipBoard_SetData($INIFile)
 Global $YourMail = IniRead($INIFile,"Konfiguration","E-Mail","nichts gefunden")
 Global $YourPassword = IniRead($INIFile,"Konfiguration","Passwort","Passwort nicht gefunden")
-MsgBox(0,"",$YourPassword)
-Global $key = 197
+Global $decryptPassword = BinaryToString(_Crypt_DecryptData($YourPassword,$key,$CALG_3DES))
+Global $server = "smtp.web.de"
+MsgBox(0,"Verschlüsseltes Password:",$YourPassword)
+MsgBox(0,"Entschlüsseltes Password:",$decryptPassword)
+
 
 ;Passwort verschlüsselt speichern
 if $YourPassword == "" Then
