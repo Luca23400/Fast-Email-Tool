@@ -37,6 +37,7 @@ Global $INIFile = @ScriptDir & "\Konfiguration.txt"
 Global $key = 197
 _ClipBoard_SetData($INIFile)
 Global $YourMail = IniRead($INIFile,"Konfiguration","E-Mail","nichts gefunden")
+Global $YourName = IniRead($INIFile,"Konfiguration","Name","nichts gefunden")
 Global $YourPassword = IniRead($INIFile,"Konfiguration","Passwort","Passwort nicht gefunden")
 Global $decryptPassword = BinaryToString(_Crypt_DecryptData($YourPassword,$key,$CALG_3DES))
 Global $server = "smtp.web.de"
@@ -61,6 +62,7 @@ While 1
 			Local $receiver = GUICtrlRead($InputReceiver)
 			Local $subject = GUICtrlRead($InputSubject)
 			Local $body = GUICtrlRead($Edit1)
+			Local $iReponse = _INetSmtpMail($server,$YourName,$YourMail,$receiver,$subject,$body)
 			;MsgBox(0,"Empfänger:",$receiver)
 			;MsgBox(0,"Betreff: ",$subject)
 			;MsgBox(0,"Text:",$body)
