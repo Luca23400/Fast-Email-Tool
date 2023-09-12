@@ -41,8 +41,8 @@ Global $YourName = IniRead($INIFile,"Konfiguration","Name","nichts gefunden")
 Global $YourPassword = IniRead($INIFile,"Konfiguration","Passwort","Passwort nicht gefunden")
 Global $decryptPassword = BinaryToString(_Crypt_DecryptData($YourPassword,$key,$CALG_3DES))
 Global $server = "smtp.web.de"
-MsgBox(0,"Verschlüsseltes Password:",$YourPassword)
-MsgBox(0,"Entschlüsseltes Password:",$decryptPassword)
+;MsgBox(0,"Verschlüsseltes Password:",$YourPassword)
+;MsgBox(0,"Entschlüsseltes Password:",$decryptPassword)
 
 
 ;Passwort verschlüsselt speichern
