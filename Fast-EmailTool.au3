@@ -63,6 +63,11 @@ While 1
 			Local $subject = GUICtrlRead($InputSubject)
 			Local $body = GUICtrlRead($Edit1)
 			Local $iReponse = _INetSmtpMail($server,$YourName,$YourMail,$receiver,$subject,$body)
+			if $iReponse = 1 then
+				MsgBox(0,"","Email gesendet")
+			else
+				MsgBox(0,"","Fehler beim senden")
+
 			;MsgBox(0,"Empfänger:",$receiver)
 			;MsgBox(0,"Betreff: ",$subject)
 			;MsgBox(0,"Text:",$body)
